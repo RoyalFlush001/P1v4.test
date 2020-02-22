@@ -9,68 +9,66 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<button class="export-btn"><i class="fa fa-file-excel-o" ></i> Export to Excel</button>
-<div id="myTable">
+<input type="button" id="btnExport" value=" Export Table" />
+@*<button class="btnExport"><i class="fa fa-file-excel-o"></i> Export to Excel</button>*@
+<div id="dvData">
     <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HE_A)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HS_A)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HS)
-            </th>
-            <th></th>
-        </tr>
-        @foreach (var item in Model)
-        {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.UserID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fecha)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HE)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HE_A)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HS_A)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HS)
-                </td>
-
-                @*<td>
-                        <a asp-action="Edit" asp-route-id="@item.EntryID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.EntryID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.EntryID">Delete</a>
-                    </td>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HE_A)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HS_A)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HS)
+                </th>
+                <th></th>
             </tr>
-        }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.UserID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HE_A)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HS_A)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HS)
+                    </td>
+
+                    @*<td>
+                            <a asp-action="Edit" asp-route-id="@item.EntryID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.EntryID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.EntryID">Delete</a>
+                        </td>*@
+                </tr>
+            }
     </table>
 </div>
 
-    @*$(document).ready(function(){
-   $(".export-btn").click(function(){
-     $("#tableCompany").tableHTMLExport({
-      type:'csv',
-      filename:'codehim-html-table-to-excel.csv',
-    });
-  });
-});*@
-
+<script>
+    $("#btnExport").click(function (e) {
+    window.open('data:application/vnd.ms-excel,' + $('#dvData').html());
+    e.preventDefault();
+});
+    </script>
