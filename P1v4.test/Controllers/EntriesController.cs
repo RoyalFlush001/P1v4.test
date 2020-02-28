@@ -156,5 +156,10 @@ namespace P1v4.test.Controllers
         {
             return _context.Entry.Any(e => e.EntryID == id);
         }
+
+        public IActionResult Upload()
+        {
+            return View();
+        }
     }
 }
